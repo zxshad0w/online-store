@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TEHNO — Интернет-магазин техники</title>
+<meta name="description" content="TEHNO — интернет-магазин современной техники">
+<meta name="author" content="TEHNO">
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3659/3659898.png">
+
+<style>
+:root {
+  --blue: #1e88e5;
+  --dark: #0f172a;
+  --gray: #f1f5f9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+
+body {
+  background: var(--gray);
+  color: var(--dark);
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  color: white;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  animation: logoPulse 3s infinite;
+}
+
+.logo img {
+  width: 40px;
+}
+
+@keyframes logoPulse {
+  50% { transform: scale(1.05); }
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== BACKGROUND ===== */
+.shop-bg {
+  background:
+    linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+  background-size: cover;
+  background-position: center;
+  padding: 60px 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== ABOUT SHOP ===== */
+.about-shop {
+  margin-bottom: 50px;
+}
+
+.about-shop h2,
+.about-shop p {
+  opacity: 0;
+  transform: translateY(-25px);
+  animation: showText 1s forwards;
+}
+
+.about-shop p:nth-child(2) { animation-delay: 0.4s; }
+.about-shop p:nth-child(3) { animation-delay: 0.8s; }
+.about-shop p:nth-child(4) { animation-delay: 1.2s; }
+.about-shop p:nth-child(5) { animation-delay: 1.6s; }
+.about-shop p:nth-child(6) { animation-delay: 2s; }
+
+@keyframes showText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== PRODUCTS GLASS BACKGROUND ===== */
+.products-wrapper {
+  background:
+    linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.75)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+/* ===== PRODUCTS ===== */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.product {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: 0.8s ease;
+}
+
+.product.right {
+  transform: translateX(80px);
+}
+
+.product.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.price {
+  color: var(--blue);
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.product button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product button:hover {
+  background: #1565c0;
+  transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #020617;
+  color: white;
+  padding: 50px 20px;
+  margin-top: 50px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+footer h4 {
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+footer p, footer a {
+  font-size: 14px;
+  color: #cbd5f5;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+footer a:hover {
+  color: white;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+  nav { display: none; }
+}
+
+/* ===== BLACK & WHITE THEME ===== */
+body.bw {
+  background: #f5f5f5;
+  color: #000;
+}
+
+body.bw header,
+body.bw footer {
+  background: #000 !important;
+  color: #fff;
+}
+body.bw nav a {
+  color: #fff;
+}
+
+body.bw .products-wrapper {
+  background: rgba(255,255,255,0.85) !important;
+}
+
+body.bw .product {
+  background: #ffffff;
+}
+
+body.bw .price {
+  color: #000;
+}
+
+body.bw button {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* 🔒 КАРТИНКИ НЕ ТРОГАЕМ */
+body.bw img {
+  filter: none !important;
+}
+
+.modal ul {
+  padding-left: 20px;   /* отступ слева для подпунктов */
+  margin: 5px 0 15px 0; /* небольшой отступ сверху и снизу */
+  list-style-type: disc; /* кружки для маркеров */
+}
+
+.modal li {
+  margin-bottom: 6px; /* расстояние между пунктами */
+}
+
+.guest-btn {
+  background: black;
+  color: white;
+  margin-top: 10px;
+}
+
+.auth-social button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;            /* ✅ фиксированная высота */
+  padding: 0;
+  border-radius: 10px;
+
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+
+  cursor: pointer;
+}
+
+/* логотипы */
+.auth-social button img {
+  max-height: 22px;        /* ✅ ОГРАНИЧЕНИЕ */
+  max-width: 22px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== ПУЛЬС ЭФФЕКТ ===== */
+@keyframes softPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* общие стили hover */
+.auth-social button {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.auth-social button:hover {
+  animation: softPulse .6s ease;
+}
+
+/* иконка */
+.auth-social button img {
+  transition: filter .25s ease;
+}
+
+.auth-guest {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.auth-guest:hover {
+  animation: softPulse .6s ease;
+  box-shadow: 0 0 12px rgba(0,0,0,.45);
+}
+/* ===== ФИРМЕННЫЕ ЦВЕТА ===== */
+
+/* Telegram — голубой */
+.telegram-btn:hover img {
+  filter: drop-shadow(0 0 6px rgba(0,136,204,.8));
+}
+
+/* VK — синий */
+.vk-btn:hover img {
+  filter: drop-shadow(0 0 6px rgba(0,119,255,.8));
+}
+
+/* Twitter (X) — серый */
+.twitter-btn:hover img {
+  filter: grayscale(1) brightness(1.3)
+          drop-shadow(0 0 6px rgba(120,120,120,.8));
+}
+
+/* Yandex — красный */
+.yandex-btn:hover img {
+  filter: drop-shadow(0 0 6px rgba(255,0,0,.85));
+}
+
+/* Facebook — тёмно-синий */
+.facebook-btn:hover img {
+  filter: drop-shadow(0 0 6px rgba(24,119,242,.9));
+}
+
+/* Google — радужный */
+.google-btn:hover img {
+  filter:
+    drop-shadow(0 0 3px #4285F4)
+    drop-shadow(0 0 3px #EA4335)
+    drop-shadow(0 0 3px #FBBC05)
+    drop-shadow(0 0 3px #34A853);
+}
+
+.auth-guest:hover {
+  background: #fff !important;
+  color: #000 !important;
+  animation: softPulse .6s ease;
+  box-shadow: 0 0 14px rgba(0,0,0,.45);
+}
+
+/* ===== ПУЛЬС ДЛЯ КНОПКИ "ВОЙТИ" ===== */
+.auth-modal button:not(.auth-guest) {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.auth-modal button:not(.auth-guest):hover {
+  animation: softPulse .6s ease;
+  box-shadow: 0 0 14px rgba(30,136,229,.6);
+}
+
+/* клик */
+.auth-modal button:not(.auth-guest):active {
+  transform: scale(0.96);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png">
+      TEHNO
+    </div>
+    <nav>
+      <a href="#">Товары</a>
+      <a href="#">FAQ</a>
+      <a href="#">Отзывы</a>
+      <a href="#">Контакты</a>
+      <button onclick="toggleTheme()" style="
+  margin-left:20px;
+  padding:8px 12px;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
+">
+  Ч/Б тема
+</button>
+
+    </nav>
+  </div>
+</header>
+
+<section class="shop-bg">
+  <div class="container">
+
+    <div class="about-shop">
+      <h2>Добро пожаловать в TEHNO</h2>
+      <p>TEHNO — интернет-магазин современной электроники и техники.</p>
+      <p>Мы работаем с 2015 года и поставляем продукцию по всей России.</p>
+      <p>В ассортименте смартфоны, ноутбуки, гаджеты и аксессуары.</p>
+      <p>Только оригинальная техника с официальной гарантией.</p>
+      <p>Быстрая доставка, честные цены и поддержка 24/7.</p>
+    </div>
+
+    <div class="products-wrapper">
+      <div class="products">
+        <!-- товары (без изменений) -->
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=3c01f4878271ce137d1ff2fbef2aab320358461b-11938206-images-thumbs&n=13"><h3>Смартфон</h3><p>Современный флагман</p><div class="price">99 000 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=03001c9b076a197c0d91cdd93f6220ecd6bc2218-16114946-images-thumbs&n=13"><h3>Ноутбук</h3><p>Для работы и игр</p><div class="price">79 990 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=f3eb2509b7adb8f78aefb7f5a3fc54e71f0d896f-6898416-images-thumbs&n=13"><h3>Наушники</h3><p>Шумоподавление</p><div class="price">15 900 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=7a96c6e8cb4088d741728016cffb63b1c964d6e8-3085767-images-thumbs&n=13"><h3>Часы</h3><p>Умные часы</p><div class="price">14 990 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=e83165f371906d539515eb431182a1279c8ddebd-5169365-images-thumbs&n=13"><h3>Колонка</h3><p>Bluetooth</p><div class="price">6 990 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=ab1a04bdc1a815914d49c1883cac91b644f78d4a-4076377-images-thumbs&n=13"><h3>Планшет</h3><p>Для учёбы</p><div class="price">35 990 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=b12757ddf1ced49445b7ea2b8038bd873ca95217-5859771-images-thumbs&n=13"><h3>Монитор</h3><p>4K Ultra HD</p><div class="price">45 990 ₽</div><button>Купить</button></div>
+        <div class="product"><img src="https://avatars.mds.yandex.net/i?id=b70dd0275016b677f60117c536e3f5e365e66cbc-10906504-images-thumbs&n=13"><h3>Клавиатура</h3><p>Механическая</p><div class="price">10 900 ₽</div><button>Купить</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+
+    <div>
+      <h4>О компании</h4>
+      <p>TEHNO — интернет-магазин техники и электроники.</p>
+      <p>Работаем с 2015 года и обслужили более 100 000 клиентов.</p>
+      <p>Мы ценим качество, надёжность и доверие покупателей.</p>
+    </div>
+
+    <div>
+      <h4>Контакты</h4>
+      <p>Телефон: +7 (900) 123-45-67</p>
+      <p>Email: support@tehno.ru</p>
+      <p>График: ежедневно 09:00 – 21:00</p>
+    </div>
+
+    <div>
+      <h4>Социальные сети</h4>
+      <a href="https://vk.com/">VK</a><br>
+      <a href="https://web.telegram.org/k/">Telegram</a><br>
+      <a href="https://www.youtube.com/watch?v=jrVCSsc5g7Q">YouTube</a>
+    </div>
+
+    <div>
+      <h4>Покупателям</h4>
+      <p>Доставка по всей России</p>
+      <p>Оплата: карта, онлайн, при получении</p>
+      <p>Гарантия на технику — 1 год</p>
+      <p>Возврат и обмен — 14 дней</p>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2015–2026 TEHNO — Интернет-магазин техники
+  </div>
+</footer>
+
+<script>
+const products = document.querySelectorAll('.product');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+}, { threshold: 0.3 });
+
+products.forEach((el, i) => {
+  if (i % 2 === 1) el.classList.add('right');
+  observer.observe(el);
+});
+
+function toggleTheme() {
+  document.body.classList.toggle('bw');
+  localStorage.setItem(
+    'theme',
+    document.body.classList.contains('bw') ? 'bw' : ''
+  );
+}
+
+if (localStorage.getItem('theme') === 'bw') {
+  document.body.classList.add('bw');
+}
+/* ===== при нажатии на логотип обновляется страница сайта ===== */
+document.querySelector('.logo').style.cursor = 'pointer';
+
+document.querySelector('.logo').addEventListener('click', () => {
+  location.reload();
+});
+
+/* ================= СТИЛИ ================= */
+const style = document.createElement('style');
+style.innerHTML = `
+/* кнопка ! */
+.info-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1e88e5;  
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* затемнение */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 2000;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* модальное окно */
+.modal {
+  background: white;
+  color: #0f172a;
+  padding: 25px;
+  width: min(90%, 420px);
+  border-radius: 18px;
+  transform: scale(0.85);
+  opacity: 0;
+  transition: 0.35s ease;
+}
+
+.modal-overlay.show .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal h3 {
+  margin-bottom: 10px;
+}
+
+.modal p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== ЧЕРНО-БЕЛАЯ ТЕМА (без картинок) ===== */
+body.bw-theme * {
+  background-color: transparent;
+  color: #000 !important;
+}
+
+body.bw-theme header,
+body.bw-theme footer,
+body.bw-theme .products-wrapper {
+  background: #fff !important;
+}
+
+body.bw-theme .product,
+body.bw-theme .modal {
+  background: #fff !important;
+  box-shadow: 0 0 0 1px #000;
+}
+
+/* важно: картинки НЕ трогаем */
+body.bw-theme img {
+  filter: none !important;
+}
+`;
+document.head.appendChild(style);
+
+/* ================= ДАННЫЕ ТОВАРОВ ================= */
+const productInfo = {
+  "Смартфон": `
+iPhone 16 Pro — флагман Apple с премиальным дизайном и высокой производительностью.
+<b>
+  <p>Сильные стороны:</p>
+</b>
+<ul>
+  <li>Прочный титановый корпус</li>
+  <li>OLED-дисплей с высокой частотой обновления</li>
+  <li>Мощный процессор Apple нового поколения</li>
+  <li>Продвинутая камера для фото и видео</li>
+  <li>Длительное время работы от батареи</li>
+  <li>Face ID и высокий уровень защиты данных</li>
+  <li>Поддержка Apple Intelligence</li>
+</ul>
+<strong>Функции и возможности:</strong>
+<ul>
+  <li>Съёмка фото и видео профессионального уровня</li>
+  <li>Поддержка современных стандартов связи и USB-C</li>
+  <li>Оптимизация для игр, приложений и AI задач</li>
+</ul>
+`,
+  "Ноутбук": `
+MacBook с macOS — ноутбук премиум-класса с высокой производительностью и элегантным дизайном.
+
+<b>
+  <p>
+    Сильные стороны:
+  </p>
+</b>
+<ul>
+  <li>Лёгкий и прочный алюминиевый корпус</li>
+  <li>Яркий Retina-дисплей с высокой цветопередачей</li>
+  <li>Мощный процессор и продвинутая графика</li>
+  <li>Длительное время работы без подзарядки</li>
+  <li>Интуитивная и безопасная операционная система macOS</li>
+  <li>Поддержка интеграции с iPhone, iPad и другими устройствами Apple</li>
+</ul>
+
+<strong>Функции и возможности:</strong>
+<ul>
+  <li>Быстрая работа приложений, программ для творчества и игр</li>
+  <li>Многозадачность и эффективная продуктивность</li>
+  <li>Интеграция с другими устройствами Apple</li>
+</ul>
+`,
+  "Наушники": `
+AirPods Pro 2 — профессиональные беспроводные наушники с качественным звуком и комфортом.
+
+<p>
+  <b>
+    Сильные стороны:
+  </b>
+</p>
+<ul>
+  <li>Активное шумоподавление и режим Прозрачности</li>
+  <li>Чистый и насыщенный звук с глубокими басами</li>
+  <li>Компактный и лёгкий дизайн для максимального комфорта</li>
+  <li>До 6 часов автономной работы и до 30 часов с кейсом</li>
+  <li>Поддержка беспроводной зарядки</li>
+  <li>Быстрое подключение и управление с помощью жестов</li>
+  <li>Интеграция с устройствами Apple через iCloud</li>
+</ul>
+
+<p><b>Функции и возможности:</b></p>
+<ul>
+  <li>Идеальны для музыки, подкастов и звонков</li>
+  <li>Интуитивное управление жестами</li>
+  <li>Совместимость с устройствами Apple</li>
+</ul>
+`,
+  "Часы": `
+Apple Watch — ваш умный помощник на запястье, который помогает следить за здоровьем и оставаться на связи.
+
+<p><b>Сильные стороны:</b></p>
+<ul>
+  <li>Отслеживание здоровья и физической активности</li>
+  <li>Уведомления о звонках, сообщениях и событиях</li>
+  <li>Яркий и удобный дисплей Retina</li>
+  <li>Водозащищённый корпус для спорта и плавания</li>
+  <li>Длительное время работы от батареи</li>
+  <li>Быстрая синхронизация с iPhone и другими устройствами Apple</li>
+  <li>Большой выбор ремешков и дизайнов</li>
+</ul>
+
+<p>
+  <b>
+    Функции и возможности:
+  </b>
+</p>
+<ul>
+  <li>Мониторинг сердечного ритма, кислорода в крови, сна и активности</li>
+  <li>Уведомления и управление приложениями без смартфона</li>
+  <li>Использование для спорта и плавания благодаря водозащите</li>
+</ul>
+`,
+  "Колонка": `
+Apple HomePod — умная беспроводная колонка с чистым и насыщенным звучанием для вашего дома.
+
+<p><b>Сильные стороны:</b></p>
+<ul>
+  <li>Кристально чистый и насыщенный звук</li>
+  <li>Пространственный звук и адаптивная настройка под комнату</li>
+  <li>Управление голосом через Siri</li>
+  <li>Интеграция с устройствами Apple через AirPlay</li>
+  <li>Воспроизведение музыки, подкастов и звонков</li>
+  <li>Совместимость с умным домом и аксессуарами HomeKit</li>
+  <li>Стильный и компактный дизайн</li>
+</ul>
+
+<p>
+  <b>
+    Функции и возможности:
+  </b>
+</p>
+<ul>
+  <li>Автоматическая подстройка звука под акустику помещения</li>
+  <li>Голосовое управление музыкой и умным домом</li>
+  <li>Воспроизведение любимого контента с устройств Apple</li>
+</ul>
+`,
+  "Планшет": `
+iPad — универсальный планшет для работы, учёбы и развлечений.
+
+<p>
+  <b>
+    Сильные стороны:
+  </b>
+</p>
+<ul>
+  <li>Яркий и чёткий Retina-дисплей</li>
+  <li>Мощный процессор для работы и игр</li>
+  <li>Совместимость с Apple Pencil и Smart Keyboard</li>
+  <li>Длительное время работы без подзарядки</li>
+  <li>Интуитивная и безопасная операционная система iPadOS</li>
+  <li>Лёгкий и прочный алюминиевый корпус</li>
+  <li>Интеграция с iPhone, Mac и другими устройствами Apple</li>
+</ul>
+
+<p><b>Функции и возможности:</b></p>
+<ul>
+  <li>Многофункциональное устройство для учёбы, работы и творчества</li>
+  <li>Поддержка рисования и заметок с Apple Pencil</li>
+  <li>Подключение клавиатуры для удобного ввода текста</li>
+</ul>
+`,
+  "Монитор": `
+Apple Studio Display — профессиональный монитор с безупречным изображением для работы, творчества и развлечений.
+
+<p>
+  <b>
+    Сильные стороны:
+  </b>
+</p>
+<ul>
+  <li>Большой 4K Retina-дисплей с точной цветопередачей</li>
+  <li>Идеально подходит для работы с фото, видео и графикой</li>
+  <li>Встроенные динамики и микрофоны для звонков и медиа</li>
+  <li>Широкие углы обзора и высокая яркость</li>
+  <li>Простая интеграция с Mac и устройствами Apple</li>
+  <li>Элегантный и прочный алюминиевый корпус</li>
+  <li>Современный минималистичный дизайн</li>
+</ul>
+
+<p>
+  <b>
+    Функции и возможности:
+  </b>
+</p>
+<ul>
+  <li>Редактирование фото и видео с высокой точностью цветов</li>
+  <li>Подключение и управление через macOS</li>
+  <li>Чистый звук и удобные видеозвонки с встроенными динамиками и микрофонами</li>
+</ul>
+`,
+  "Клавиатура":`
+  Apple Keyboard — элегантная и удобная клавиатура для работы, учёбы и творчества.
+
+<p><b>Сильные стороны:</b></p>
+<ul>
+  <li>Эргономичные и тихие клавиши для комфортной печати</li>
+  <li>Беспроводное подключение через Bluetooth</li>
+  <li>Совместимость с Mac и iPad</li>
+  <li>Длительное время работы от встроенного аккумулятора</li>
+  <li>Компактный, стильный и тонкий дизайн</li>
+  <li>Функциональные клавиши для управления мультимедиа и системой</li>
+</ul>
+
+<p><b>Функции и возможности:</b></p>
+<ul>
+  <li>Удобная и быстрая печать без усталости</li>
+  <li>Свобода на рабочем столе благодаря беспроводному подключению</li>
+  <li>Поддержка всех мультимедиа и системных функций через функциональные клавиши</li>
+</ul>`
+};
+
+/* ================= МОДАЛЬНОЕ ОКНО ================= */
+const overlay = document.createElement('div');
+overlay.className = 'modal-overlay';
+overlay.innerHTML = `<div class="modal"></div>`;
+document.body.appendChild(overlay);
+
+const modal = overlay.querySelector('.modal');
+
+/* ================= КАРТОЧКИ ================= */
+document.querySelectorAll('.product').forEach(product => {
+  product.style.position = 'relative';
+
+  const title = product.querySelector('h3')?.innerText || '';
+  const price = product.querySelector('.price')?.innerText || '';
+
+  const btn = document.createElement('button');
+  btn.className = 'info-btn';
+  btn.textContent = '!';
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    modal.innerHTML = `
+      <h3>${title}</h3>
+      <p>${productInfo[title] || 'Подробная информация о товаре.'}</p>
+      <p><strong>Цена:</strong> ${price}</p>
+      <p><small>Гарантия 1 год • Доставка по РФ</small></p>
+    `;
+
+    overlay.classList.add('show');
+  });
+
+  product.appendChild(btn);
+});
+
+/* ================= ЗАКРЫТИЕ ================= */
+overlay.addEventListener('click', () => {
+  overlay.classList.remove('show');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    overlay.classList.remove('show');
+    resetAuthForm();
+  }
+});
+
+/* ================= ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ================= */
+let bw = false;
+
+document.addEventListener('keydown', (e) => {
+  const tag = document.activeElement.tagName;
+
+  // ❌ если пользователь печатает в поле ввода — ничего не делаем
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+  if (e.key.toLowerCase() === 't') {
+    bw = !bw;
+    document.body.classList.toggle('bw-theme', bw);
+  }
+});
+
+
+/* === Вход "регистрация" === */
+/* ================== АВАТАР В HEADER ================== */
+const headerInner = document.querySelector('.header-inner');
+
+const avatarBtn = document.createElement('div');
+avatarBtn.innerHTML = `
+  <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+`;
+avatarBtn.style.cssText = `
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  overflow:hidden;
+  cursor:pointer;
+  margin-left:20px;
+`;
+avatarBtn.querySelector('img').style.width = '100%';
+
+headerInner.appendChild(avatarBtn);
+
+/* ================== СТИЛИ ================== */
+const authStyle = document.createElement('style');
+authStyle.innerHTML = `
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 3000;
+}
+
+.auth-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.auth-modal {
+  background: white;
+  width: min(92%, 420px);
+  padding: 25px;
+  border-radius: 18px;
+  position: relative;
+  transform: scale(.85);
+  opacity: 0;
+  transition: .35s ease;
+}
+
+.auth-overlay.show .auth-modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.auth-back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.auth-modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-modal input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.auth-modal button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #1e88e5;
+  color: white;
+  font-weight: bold;
+}
+
+.auth-social {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.auth-social button {
+  background: #f1f5f9;
+  color: #000;
+}
+
+.auth-guest {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #000 !important;
+
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+`;
+document.head.appendChild(authStyle);
+
+/* ================== МОДАЛЬНОЕ ОКНО ================== */
+const authOverlay = document.createElement('div');
+authOverlay.className = 'auth-overlay';
+authOverlay.innerHTML = `
+  <div class="auth-modal">
+    <div class="auth-back">←</div>
+    <h2>Вход / Регистрация</h2>
+
+    <input type="text" placeholder="Login или Email">
+    <input type="password" placeholder="Пароль">
+
+    <button>Войти</button>
+
+    <div class="auth-social">
+  <button class="auth-btn telegram-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"> Telegram
+  </button>
+  <button class="auth-btn vk-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" alt="VK"> VK
+  </button>
+  <button class="auth-btn twitter-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/145/145812.png" alt="X (Twitter)"> X (Twitter)
+  </button>
+  <button class="auth-btn google-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google"> Google
+  </button>
+  <button class="auth-btn facebook-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"> Facebook
+  </button>
+  <button class="auth-btn yandex-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Yandex_icon.svg" alt="Яндекс" style="height:20px;"> Яндекс
+  </button>
+</div>
+
+    <button class="auth-guest">Войти как гость</button>
+  </div>
+`;
+document.body.appendChild(authOverlay);
+
+/* ================== ОТКРЫТИЕ / ЗАКРЫТИЕ ================== */
+avatarBtn.addEventListener('click', () => {
+  authOverlay.classList.add('show');
+});
+
+authOverlay.addEventListener('click', (e) => {
+  if (e.target === authOverlay) {
+    authOverlay.classList.remove('show');
+    resetAuthForm();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    authOverlay.classList.remove('show');
+  }
+});
+
+authOverlay.querySelector('.auth-back').addEventListener('click', () => {
+  authOverlay.classList.remove('show');
+  resetAuthForm();
+});
+
+function resetAuthForm() {
+  authOverlay.querySelectorAll('input').forEach(input => {
+    input.value = '';
+  });
+}
+
+</script>
+
+</body>
+</html> 
