@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -409,7 +409,7 @@ body.bw img {
 
 /* ===== ПАНЕЛЬ КАТЕГОРИЙ ===== */
 .categories-bar {
-  background: linear-gradient(90deg, #0f172a, #1e293b);
+  background: linear-gradient(90deg, #384d70, #384d70);
   border-top: 1px solid rgba(255,255,255,0.1);
   display: none;
 }
@@ -442,6 +442,145 @@ body.bw img {
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* FAQ не ломает строку */
+.faq-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#faqBtn {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.faq-box {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  color: #000;
+  padding: 12px;
+  border-radius: 8px;
+  width: 260px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.faq-box ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq-box li {
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.faq-box li:hover {
+  color: #007bff;
+}
+
+.reviews-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviews-content {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 360px;
+  animation: fadeIn 0.3s ease;
+}
+
+.reviews-content button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* анимация */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== GLASS EFFECT ДЛЯ ОКНА ВХОДА ===== */
+body.bw-theme .auth-modal {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* =====================================================
+   ЧЁРНО-БЕЛАЯ ТЕМА — КОРРЕКТНЫЕ ЦВЕТА
+   ===================================================== */
+
+/* базовый цвет текста */
+body.bw-theme {
+  background: #f5f5f5;
+  color: #000;
+}
+
+/* header и навигация */
+body.bw-theme header,
+body.bw-theme nav a,
+body.bw-theme .logo {
+  color: #000 !important;
+}
+
+/* кнопка "Ч/Б тема" */
+body.bw-theme header button {
+  background: #000;
+  color: #fff;
+}
+
+/* glass-эффект для окна входа */
+body.bw-theme .auth-modal {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #000;
+}
+
+/* другие модальные окна */
+body.bw-theme .modal,
+body.bw-theme .reviews-content {
+  color: #000;
+}
+
 </style>
 </head>
 
@@ -453,21 +592,36 @@ body.bw img {
       <img src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png">
       TEHNO
     </div>
-    <nav>
-      <a href="#">Товары</a>
-      <a href="#">FAQ</a>
-      <a href="#">Отзывы</a>
-      <a href="#">Контакты</a>
-      <button onclick="toggleTheme()" style="
-  margin-left:20px;
-  padding:8px 12px;
-  border-radius:6px;
-  border:none;
-  cursor:pointer;
-">
-  Ч/Б тема
-</button>
 
+    <nav class="menu">
+      <a href="#">Товары</a>
+
+      <!-- FAQ -->
+      <div class="faq-container">
+        <a href="#" id="faqBtn">FAQ</a>
+
+        <div id="faqBox" class="faq-box">
+          <ul>
+            <li>Где найти информацию о товаре?</li>
+            <li>Где связаться с поддержкой?</li>
+            <li>Проблема с информацией</li>
+            <li>Дополнительные связи с компанией?</li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="#" id="reviewsBtn" >Отзывы</a>
+      <a href="#contacs">Контакты</a>
+
+      <button onclick="toggleTheme()" style="
+        margin-left:20px;
+        padding:8px 12px;
+        border-radius:6px;
+        border:none;
+        cursor:pointer;
+      ">
+        Ч/Б тема
+      </button>
     </nav>
   </div>
 </header>
@@ -525,7 +679,7 @@ body.bw img {
   </div>
 </section>
 
-<footer>
+<footer id = "contacs" >
   <div class="footer-inner">
 
     <div>
@@ -562,7 +716,27 @@ body.bw img {
   <div class="copyright">
     © 2015–2026 TEHNO — Интернет-магазин техники
   </div>
+
+  
 </footer>
+
+<div class="reviews-modal" id="reviewsModal">
+  <div class="reviews-content">
+    <h3>Временно недоступно</h3>
+    <p>
+      Извини, сайт временно не работает,<br>
+      так как находится в разработке.
+    </p>
+    <button onclick="closeReviews()">Понятно</button>
+  </div>
+</div>
+
+<div class="reviews-modal" id="faqModal">
+  <div class="reviews-content">
+    <p id="faqText"></p>
+    <button onclick="closeFaq()">Понятно</button>
+  </div>
+</div>
 
 <script>
 const products = document.querySelectorAll('.product');
@@ -669,9 +843,9 @@ style.innerHTML = `
 }
 
 /* ===== ЧЕРНО-БЕЛАЯ ТЕМА (без картинок) ===== */
-body.bw-theme * {
-  background-color: transparent;
-  color: #000 !important;
+body.bw-theme {
+  background: #f5f5f5;
+  color: #000;
 }
 
 body.bw-theme header,
@@ -1143,6 +1317,67 @@ const categoriesBar = document.getElementById('categoriesBar');
 goodsLink.addEventListener('click', (e) => {
   e.preventDefault();
   categoriesBar.classList.toggle('show');
+});
+
+
+const faqBtn = document.getElementById('faqBtn');
+const faqBox = document.getElementById('faqBox');
+
+faqBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  faqBox.style.display =
+    faqBox.style.display === 'block' ? 'none' : 'block';
+});
+
+const reviewsBtn = document.getElementById('reviewsBtn');
+const reviewsModal = document.getElementById('reviewsModal');
+
+reviewsBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  reviewsModal.style.display = 'flex';
+});
+
+function closeReviews() {
+  reviewsModal.style.display = 'none';
+}
+
+/* закрытие по клику вне окна */
+reviewsModal.addEventListener('click', (e) => {
+  if (e.target === reviewsModal) {
+    closeReviews();
+  }
+});
+
+const faqItems = document.querySelectorAll('#faqBox li');
+const faqModal = document.getElementById('faqModal');
+const faqText = document.getElementById('faqText');
+
+const faqAnswers = [
+  'Информацию о товаре вы можете посмотреть, нажав на восклицательный знак рядом с товаром, либо зайти в каталог, выбрать категорию и узнать подробную информацию о товаре.',
+
+  'Связаться с поддержкой можно через социальные сети или по электронной почте.',
+
+  'Если возникла проблема, пожалуйста, свяжитесь с поддержкой для её решения.',
+
+  'Связаться с компанией (поддержкой) вы можете по номеру телефона, электронной почте или через социальные сети.'
+];
+
+faqItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    faqText.textContent = faqAnswers[index];
+    faqModal.style.display = 'flex';
+  });
+});
+
+function closeFaq() {
+  faqModal.style.display = 'none';
+}
+
+/* закрытие по клику вне окна */
+faqModal.addEventListener('click', (e) => {
+  if (e.target === faqModal) {
+    closeFaq();
+  }
 });
 
 </script>
