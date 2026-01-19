@@ -406,6 +406,42 @@ body.bw img {
 .auth-modal button:not(.auth-guest):active {
   transform: scale(0.96);
 }
+
+  /* ===== ПАНЕЛЬ КАТЕГОРИЙ ===== */
+.categories-bar {
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: none;
+}
+
+.categories-bar.show {
+  display: block;
+}
+
+.categories-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.categories-inner a {
+  color: #e5e7eb;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.categories-inner a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+  
 </style>
 </head>
 
@@ -435,6 +471,30 @@ body.bw img {
     </nav>
   </div>
 </header>
+
+  <div class="categories-bar" id="categoriesBar">
+  <div class="categories-inner">
+    <a href="#">Телефоны</a>
+    <a href="#">Ноутбуки</a>
+    <a href="#">Мониторы</a>
+    <a href="#">Наушники</a>
+    <a href="#">Часы</a>
+    <a href="#">Колонки</a>
+    <a href="#">Планшеты</a>
+    <a href="#">Материнские платы</a>
+    <a href="#">Клавиатуры</a>
+    <a href="#">Телевизоры</a>
+    <a href="#">Мышки</a>
+    <a href="#">Микрофоны</a>
+    <a href="#">Видеокарты</a>
+    <a href="#">Процессоры</a>
+    <a href="#">Блоки питания</a>
+    <a href="#">ОЗУ</a>
+    <a href="#">SSD и HDD</a>
+    <a href="#">Системы охлаждения</a>
+    <a href="#">Корпуса</a>
+  </div>
+</div>
 
 <section class="shop-bg">
   <div class="container">
@@ -1075,6 +1135,16 @@ function resetAuthForm() {
     input.value = '';
   });
 }
+  /* ===== КНОПКА "ТОВАРЫ" ===== */
+const goodsLink = document.querySelector('nav a'); // первая ссылка — "Товары"
+const categoriesBar = document.getElementById('categoriesBar');
+
+goodsLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  categoriesBar.classList.toggle('show');
+});
+
+</script>
 
 </script>
 
