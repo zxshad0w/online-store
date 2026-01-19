@@ -407,7 +407,7 @@ body.bw img {
   transform: scale(0.96);
 }
 
-  /* ===== ПАНЕЛЬ КАТЕГОРИЙ ===== */
+/* ===== ПАНЕЛЬ КАТЕГОРИЙ ===== */
 .categories-bar {
   background: linear-gradient(90deg, #0f172a, #1e293b);
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -441,7 +441,7 @@ body.bw img {
   background: rgba(255,255,255,0.1);
   color: #fff;
 }
-  
+
 </style>
 </head>
 
@@ -472,7 +472,7 @@ body.bw img {
   </div>
 </header>
 
-  <div class="categories-bar" id="categoriesBar">
+<div class="categories-bar" id="categoriesBar">
   <div class="categories-inner">
     <a href="#">Телефоны</a>
     <a href="#">Ноутбуки</a>
@@ -1135,7 +1135,8 @@ function resetAuthForm() {
     input.value = '';
   });
 }
-  /* ===== КНОПКА "ТОВАРЫ" ===== */
+
+/* ===== КНОПКА "ТОВАРЫ" ===== */
 const goodsLink = document.querySelector('nav a'); // первая ссылка — "Товары"
 const categoriesBar = document.getElementById('categoriesBar');
 
@@ -1143,8 +1144,6 @@ goodsLink.addEventListener('click', (e) => {
   e.preventDefault();
   categoriesBar.classList.toggle('show');
 });
-
-</script>
 
 </script>
 
