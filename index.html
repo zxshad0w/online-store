@@ -581,6 +581,42 @@ body.bw-theme .reviews-content {
   color: #000;
 }
 
+.lang-popup {
+  position: absolute;
+  top: 65px;
+  right: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  overflow: hidden;
+  display: none;
+  z-index: 4000;
+}
+
+.lang-popup div {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.lang-popup div:hover {
+  background: #f1f5f9;
+}
+
+.lang-popup {
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
+  transition: .25s;
+}
+
+.lang-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 </style>
 </head>
 
@@ -594,13 +630,13 @@ body.bw-theme .reviews-content {
     </div>
 
     <nav class="menu">
-      <a href="#">Товары</a>
+      <a data-i18n="products">Товары</a>
 
       <!-- FAQ -->
       <div class="faq-container">
-        <a href="#" id="faqBtn">FAQ</a>
+        <a href="#" id="faqBtn" data-i18n="faq" >FAQ</a>
 
-        <div id="faqBox" class="faq-box">
+        <div id="faqBox" class="faq-box" data-i18n="products">
           <ul>
             <li>Где найти информацию о товаре?</li>
             <li>Где связаться с поддержкой?</li>
@@ -610,8 +646,8 @@ body.bw-theme .reviews-content {
         </div>
       </div>
 
-      <a href="#" id="reviewsBtn" >Отзывы</a>
-      <a href="#contacs">Контакты</a>
+      <a href="#" id="reviewsBtn" data-i18n="reviews">Отзывы</a>
+      <a href="#contacs" data-i18n="contacts">Контакты</a>
 
       <button onclick="toggleTheme()" style="
         margin-left:20px;
@@ -654,12 +690,12 @@ body.bw-theme .reviews-content {
   <div class="container">
 
     <div class="about-shop">
-      <h2>Добро пожаловать в TEHNO</h2>
-      <p>TEHNO — интернет-магазин современной электроники и техники.</p>
-      <p>Мы работаем с 2015 года и поставляем продукцию по всей России.</p>
-      <p>В ассортименте смартфоны, ноутбуки, гаджеты и аксессуары.</p>
-      <p>Только оригинальная техника с официальной гарантией.</p>
-      <p>Быстрая доставка, честные цены и поддержка 24/7.</p>
+      <h2 data-i18n="welcome">Добро пожаловать в TEHNO</h2>
+      <p data-i18n="about1">TEHNO — интернет-магазин современной электроники и техники.</p>
+      <p data-i18n="about2">Мы работаем с 2015 года и поставляем продукцию по всей России.</p>
+      <p data-i18n="about3">В ассортименте смартфоны, ноутбуки, гаджеты и аксессуары.</p>
+      <p data-i18n="about4">Только оригинальная техника с официальной гарантией.</p>
+      <p data-i18n="about5">Быстрая доставка, честные цены и поддержка 24/7.</p>
     </div>
 
     <div class="products-wrapper">
@@ -683,14 +719,14 @@ body.bw-theme .reviews-content {
   <div class="footer-inner">
 
     <div>
-      <h4>О компании</h4>
+      <h4 data-i18n="footer_about">О компании</h4>
       <p>TEHNO — интернет-магазин техники и электроники.</p>
       <p>Работаем с 2015 года и обслужили более 100 000 клиентов.</p>
       <p>Мы ценим качество, надёжность и доверие покупателей.</p>
     </div>
 
     <div>
-      <h4>Контакты</h4>
+      <h4 data-i18n="footer_contacts" >Контакты</h4>
       <p>Телефон: +7 (900) 123-45-67</p>
       <p>Email: support@tehno.ru</p>
       <p>График: ежедневно 09:00 – 21:00</p>
@@ -737,6 +773,13 @@ body.bw-theme .reviews-content {
     <button onclick="closeFaq()">Понятно</button>
   </div>
 </div>
+
+<div id="langPopup" class="lang-popup">
+  <div data-lang="ru">🇷🇺 Русский</div>
+  <div data-lang="en">🇬🇧 English</div>
+  <div data-lang="de">🇩🇪 Deutsch</div>
+</div>
+
 
 <script>
 const products = document.querySelectorAll('.product');
@@ -1147,6 +1190,24 @@ avatarBtn.querySelector('img').style.width = '100%';
 
 headerInner.appendChild(avatarBtn);
 
+// 🌐 кнопка выбора языка
+const langBtn = document.createElement('div');
+langBtn.innerHTML = `
+  <img src="https://images.icon-icons.com/3205/PNG/512/globe_connection_network_online_communication_internet_website_world_wide_web_icon_195716.png">
+`;
+
+langBtn.style.cssText = `
+  width:28px;
+  height:28px;
+  margin-left:2px;
+  cursor:pointer;
+  opacity:0.9;
+`;
+langBtn.querySelector('img').style.width = '100%';
+
+headerInner.appendChild(langBtn);
+
+
 /* ================== СТИЛИ ================== */
 const authStyle = document.createElement('style');
 authStyle.innerHTML = `
@@ -1379,6 +1440,101 @@ faqModal.addEventListener('click', (e) => {
     closeFaq();
   }
 });
+
+const translations = {
+  ru: {
+    products: "Товары",
+    faq: "FAQ",
+    reviews: "Отзывы",
+    contacts: "Контакты",
+    theme: "Ч/Б тема",
+
+    welcome: "Добро пожаловать в TEHNO",
+    about1: "TEHNO — интернет-магазин современной электроники и техники.",
+    about2: "Мы работаем с 2015 года и поставляем продукцию по всей России.",
+
+    footer_about: "О компании",
+    footer_contacts: "Контакты",
+    footer_socials: "Социальные сети",
+    footer_buyers: "Покупателям",
+
+    reviews_text: "Извините, сайт пока что находится в разработке."
+  },
+
+  en: {
+    products: "Products",
+    faq: "FAQ",
+    reviews: "Reviews",
+    contacts: "Contacts",
+    theme: "B/W theme",
+
+    welcome: "Welcome to TEHNO",
+    about1: "TEHNO is an online electronics store.",
+    about2: "We have been working since 2015 and deliver across Russia.",
+
+    footer_about: "About company",
+    footer_contacts: "Contacts",
+    footer_socials: "Social networks",
+    footer_buyers: "For customers",
+
+    reviews_text: "Sorry, the site is currently under development."
+  },
+
+  de: {
+    products: "Produkte",
+    faq: "FAQ",
+    reviews: "Bewertungen",
+    contacts: "Kontakte",
+    theme: "S/W Modus",
+
+    welcome: "Willkommen bei TEHNO",
+    about1: "TEHNO ist ein Online-Technikgeschäft.",
+    about2: "Wir arbeiten seit 2015 und liefern in ganz Russland.",
+
+    footer_about: "Über uns",
+    footer_contacts: "Kontakte",
+    footer_socials: "Soziale Netzwerke",
+    footer_buyers: "Für Kunden",
+
+    reviews_text: "Die Website befindet sich derzeit in Entwicklung."
+  }
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+}
+
+const savedLang = localStorage.getItem("lang") || "ru";
+setLanguage(savedLang);
+
+const langPopup = document.getElementById('langPopup');
+
+langBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // чтобы не закрывалось сразу
+  langPopup.style.display =
+    langPopup.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', () => {
+  langPopup.style.display = 'none';
+});
+
+langPopup.querySelectorAll('div').forEach(item => {
+  item.addEventListener('click', () => {
+    const lang = item.dataset.lang;
+    setLanguage(lang);
+    localStorage.setItem('lang', lang);
+    langPopup.style.display = 'none';
+  });
+});
+
+langPopup.classList.toggle('show');
+
 
 </script>
 
