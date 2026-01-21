@@ -1481,7 +1481,7 @@ const translations = {
     screen_u: "4K Ultra HD",
     
     keyboard: "Клавиатура",
-    keyboard_m: "Механическая",
+    screen_m: "Механическая",
     
     buy: "купить",
 
@@ -1542,7 +1542,7 @@ const translations = {
     screen_u: "4K Ultra HD",
 
     keyboard: "Keyboard",
-    keyboard_m: "Mechanical",
+    screen_m: "Mechanical",
 
     buy: "buy",
 
@@ -1603,7 +1603,7 @@ const translations = {
     screen_u: "4K Ultra HD",
 
     keyboard: "Tastatur",
-    keyboard_m: "Mechanisch",
+    screen_m: "Mechanisch",
 
     buy: "kaufen",
 
@@ -1617,6 +1617,23 @@ const translations = {
 };
 
 let currentLang = localStorage.getItem("lang") || "ru";
+
+function changeLanguage(lang) {
+  currentLang = lang;
+  displayProducts();
+}
+
+function displayProducts() {
+  const productsContainer = document.getElementById("products");
+  productsContainer.innerHTML = ""; // очищаем контейнер
+
+  const info = productInfo[currentLang];
+  for (let key in info) {
+    const div = document.createElement("div");
+    div.innerHTML = `<h2>${key}</h2>${info[key]}`;
+    productsContainer.appendChild(div);
+  }
+}
 
 function setLanguage(lang) {
   
