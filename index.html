@@ -720,36 +720,36 @@ body.bw-theme .reviews-content {
 
     <div>
       <h4 data-i18n="footer_about">О компании</h4>
-      <p>TEHNO — интернет-магазин техники и электроники.</p>
-      <p>Работаем с 2015 года и обслужили более 100 000 клиентов.</p>
-      <p>Мы ценим качество, надёжность и доверие покупателей.</p>
+      <p data-i18n="tehno">TEHNO — интернет-магазин техники и электроники.</p>
+      <p data-i18n="works">Работаем с 2015 года и обслужили более 100 000 клиентов.</p>
+      <p data-i18n="cool">Мы ценим качество, надёжность и доверие покупателей.</p>
     </div>
 
     <div>
       <h4 data-i18n="footer_contacts" >Контакты</h4>
-      <p>Телефон: +7 (900) 123-45-67</p>
+      <p data-i18n="number">Телефон: +7 (900) 123-45-67</p>
       <p>Email: support@tehno.ru</p>
-      <p>График: ежедневно 09:00 – 21:00</p>
+      <p data-i18n="graf">График: ежедневно 09:00 – 21:00</p>
     </div>
 
     <div>
-      <h4>Социальные сети</h4>
+      <h4 data-i18n="footer_socials">Социальные сети</h4>
       <a href="https://vk.com/">VK</a><br>
       <a href="https://web.telegram.org/k/">Telegram</a><br>
       <a href="https://www.youtube.com/watch?v=jrVCSsc5g7Q">YouTube</a>
     </div>
 
     <div>
-      <h4>Покупателям</h4>
-      <p>Доставка по всей России</p>
-      <p>Оплата: карта, онлайн, при получении</p>
-      <p>Гарантия на технику — 1 год</p>
-      <p>Возврат и обмен — 14 дней</p>
+      <h4 data-i18n="footer_buyers">Покупателям</h4>
+      <p data-i18n="Rus">Доставка по всей России</p>
+      <p data-i18n="pay_card">Оплата: карта, онлайн, при получении</p>
+      <p data-i18n="years">Гарантия на технику — 1 год</p>
+      <p data-i18n="days">Возврат и обмен — 14 дней</p>
     </div>
 
   </div>
 
-  <div class="copyright">
+  <div class="copyright" data-i18n="off">
     © 2015–2026 TEHNO — Интернет-магазин техники
   </div>
 
@@ -758,19 +758,19 @@ body.bw-theme .reviews-content {
 
 <div class="reviews-modal" id="reviewsModal">
   <div class="reviews-content">
-    <h3>Временно недоступно</h3>
-    <p>
+    <h3 data-i18n="time_none">Временно недоступно</h3>
+    <p data-i18n="time_none_sor">
       Извини, сайт временно не работает,<br>
       так как находится в разработке.
     </p>
-    <button onclick="closeReviews()">Понятно</button>
+    <button data-i18n="okay" onclick="closeReviews()">Понятно</button>
   </div>
 </div>
 
 <div class="reviews-modal" id="faqModal">
   <div class="reviews-content">
     <p id="faqText"></p>
-    <button onclick="closeFaq()">Понятно</button>
+    <button data-i18n="okay" onclick="closeFaq()">Понятно</button>
   </div>
 </div>
 
@@ -911,6 +911,12 @@ body.bw-theme img {
 document.head.appendChild(style);
 
 /* ================= ДАННЫЕ ТОВАРОВ ================= */
+/*var json_test ={
+  "product_info":"Iphone16",
+  "product_desc":"Iphone16",
+  "product_tech":"Iphone16"
+}
+document.querySelector().innerHTML = json_test["product_info"]*/
 const productInfo = {
   "Смартфон": `
 iPhone 16 Pro — флагман Apple с премиальным дизайном и высокой производительностью.
@@ -1309,12 +1315,12 @@ authOverlay.className = 'auth-overlay';
 authOverlay.innerHTML = `
   <div class="auth-modal">
     <div class="auth-back">←</div>
-    <h2>Вход / Регистрация</h2>
+    <h2 data-i18n="log">Вход / Регистрация</h2>
 
-    <input type="text" placeholder="Login или Email">
-    <input type="password" placeholder="Пароль">
+    <input type="text" data-i18n="L_E" placeholder="Login or Email">
+    <input type="password" data-i18n="password" placeholder="Password">
 
-    <button>Войти</button>
+    <button data-i18n="goo">Войти</button>
 
     <div class="auth-social">
   <button class="auth-btn telegram-btn">
@@ -1337,7 +1343,7 @@ authOverlay.innerHTML = `
   </button>
 </div>
 
-    <button class="auth-guest">Войти как гость</button>
+    <button data-i18n="guest" class="auth-guest">Войти как гость</button>
   </div>
 `;
 document.body.appendChild(authOverlay);
@@ -1490,7 +1496,29 @@ const translations = {
     footer_socials: "Социальные сети",
     footer_buyers: "Покупателям",
 
-    reviews_text: "Извините, сайт пока что находится в разработке."
+    tehno:"TEHNO — интернет-магазин техники и электроники.",
+    works:"Работаем с 2015 года и обслужили более 100 000 клиентов.",
+    cool:"Мы ценим качество, надёжность и доверие покупателей.",
+    number:"Телефон: +7 (900) 123-45-67",
+    graf:"График: ежедневно 09:00 – 21:00",
+    pay_card:"Оплата: карта, онлайн, при получении",
+    years:"Гарантия на технику — 1 год",
+    Rus:"Доставка по всей России",
+    off:"© 2015–2026 TEHNO — Интернет-магазин техники",
+    time_none:"Временно недоступно",
+    time_none_sor:"Извини, сайт временно не работает, так как находится в разработке.",
+    okay:"Понятно",
+
+    days:"Возврат и обмен — 14 дней",
+
+    log:"Вход / Регистрация",
+    guest:"Войти как гость",
+    goo:"Войти",
+
+    password:"Пароль",
+    L_E:"Login или Email",
+
+    //reviews_text: "Извините, сайт пока что находится в разработке."
   },
 
   en: {
@@ -1544,7 +1572,29 @@ const translations = {
     keyboard: "Keyboard",
     screen_m: "Mechanical",
 
+    tehno: "TEHNO — online store of electronics and appliances.",
+    works: "We have been operating since 2015 and have served over 100,000 customers.",
+    cool: "We value quality, reliability, and customer trust.",
+    number: "Phone: +7 (900) 123-45-67",
+    graf: "Hours: daily from 09:00 to 21:00",
+    pay_card: "Payment: card, online, on delivery",
+    years: "Warranty on equipment — 1 year",
+    Rus: "Delivery throughout Russia",
+    off: "© 2015–2026 TEHNO — Online electronics store",
+    time_none: "Temporarily unavailable",
+    time_none_sor: "Sorry, the site is temporarily unavailable as it is under development.",
+    okay: "Got it",
+
+    days:"Refunds and exchanges are available for 14 days",
+
     buy: "buy",
+
+    log: "Login / Registration",
+    guest: "Continue as guest",
+    goo: "Log in", 
+
+    password: "Password",
+    L_E: "Login or Email",
 
     footer_about: "About company",
     footer_contacts: "Contacts",
@@ -1605,7 +1655,29 @@ const translations = {
     keyboard: "Tastatur",
     screen_m: "Mechanisch",
 
+    tehno: "TEHNO — Online-Shop für Technik und Elektronik.",
+    works: "Wir arbeiten seit 2015 und haben über 100.000 Kunden bedient.",
+    cool: "Wir schätzen Qualität, Zuverlässigkeit und das Vertrauen unserer Kunden.",
+    number: "Telefon: +7 (900) 123-45-67",
+    graf: "Öffnungszeiten: täglich von 09:00 bis 21:00",
+    pay_card: "Zahlung: Karte, online, bei Lieferung",
+    years: "Garantie auf die Technik — 1 Jahr",
+    Rus: "Lieferung in ganz Russland",
+    off: "© 2015–2026 TEHNO — Online-Shop für Technik",
+    time_none: "Vorübergehend nicht verfügbar",
+    time_none_sor: "Entschuldigung, die Website ist vorübergehend nicht verfügbar, da sie sich in der Entwicklung befindet.",
+    okay: "Verstanden",
+
     buy: "kaufen",
+
+    days:"Rückgabe und Umtausch — 14 Tage",
+
+    log: "Anmelden / Registrieren",
+    guest: "Als Gast fortfahren",
+    goo: "Anmelden",
+
+    password: "Passwort",
+    L_E: "Benutzername oder E-Mail",
 
     footer_about: "Über uns",
     footer_contacts: "Kontakte",
